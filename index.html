@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ananya's Little Universe 💗</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+  background: linear-gradient(135deg,#160d2b,#39204f,#17142f);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(white 1px,transparent 1px),
+    radial-gradient(#e7baff 1px,transparent 1px);
+  background-size: 65px 65px,100px 100px;
+  background-position: 0 0,30px 40px;
+  opacity: .45;
+  animation: twinkle 5s infinite alternate;
+}
+
+@keyframes twinkle {
+  from {opacity:.2}
+  to {opacity:.65}
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+section {
+  padding: 75px 20px;
+  max-width: 850px;
+  margin: auto;
+}
+
+h1 {
+  font-size: clamp(35px,9vw,58px);
+  color: #ffd6f4;
+  text-shadow: 0 0 25px #e58cff;
+}
+
+h2 {
+  color: #f4c5ff;
+  margin-bottom: 22px;
+  font-size: 29px;
+}
+
+p {
+  line-height: 1.8;
+  color: #eee0fa;
+  font-size: 16px;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.subtitle {
+  margin: 20px 0 28px;
+}
+
+button {
+  background: linear-gradient(90deg,#e69bfa,#ffacd5);
+  color: #32133f;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 25px;
+  margin: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px #d98aff66;
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+.card {
+  background: #ffffff12;
+  border: 1px solid #ffffff35;
+  border-radius: 22px;
+  padding: 24px;
+  margin: 18px auto;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 35px #00000025;
+}
+
+.gift {
+  font-size: 85px;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  50% {transform: translateY(-12px)}
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 2px solid #e7baff66;
+}
+
+.travel {
+  font-size: 45px;
+  margin: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+#letter {
+  white-space: pre-line;
+  text-align: left;
+}
+
+footer {
+  padding: 35px 15px;
+  color: #d8b9ed;
+}
+
+.float {
+  position: fixed;
+  bottom: -30px;
+  animation: rise 8s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media(max-width:450px) {
+  section {padding:60px 17px}
+  .gallery img {height:145px}
+}
+</style>
+</head>
+
+<body>
+<div class="stars"></div>
+
+<main>
+
+<!-- WELCOME -->
+<section class="hero" id="home">
+  <p>✨ A SPECIAL LITTLE SURPRISE ✨</p>
+  <h1>Hey Ananya! 💗</h1>
+  <p class="subtitle">
+    Aaj ka din thoda extra special hai...
+    <br>Kyuki aaj tumhara birthday hai! 🌷
+  </p>
+  <button onclick="document.getElementById('gift').scrollIntoView({behavior:'smooth'})">
+    Open Your Surprise 🎁
+  </button>
+  <p style="margin-top:35px">Scroll down, birthday girl 🌙</p>
+</section>
+
+<!-- GIFT -->
+<section id="gift">
+  <h2>Something is waiting for you...</h2>
+  <div class="card">
+    <div class="gift" onclick="openGift()">🎁</div>
+    <p>Is gift ko tap karo! 👀</p>
+    <div id="giftMessage" class="hidden">
+      <h2>Surpriseeee! 😭💗</h2>
+      <p>
+        Tumhare liye ek chhoti si digital duniya banayi hai.
+        Hope tumhare face par ek cute si smile aaye! 🌸
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CAKE -->
+<section>
+  <h2>Birthday Cake Time! 🎂</h2>
+  <div class="card">
+    <div style="font-size:90px" id="cake">🎂</div>
+    <p>Chalo, birthday candles blow karne ka time!</p>
+    <button onclick="blowCandles()">Blow The Candles 🕯️</button>
+    <p id="cakeMessage"></p>
+  </div>
+</section>
+
+<!-- PHOTOS -->
+<section>
+  <h2>Little Memories 📸</h2>
+  <p>Kuch moments jo is chhoti si duniya ko aur special banate hain.</p>
+
+  <div class="gallery">
+    <img src="ananya1.jpg" alt="Ananya memory 1">
+    <img src="ananya2.jpg" alt="Ananya memory 2">
+    <img src="ananya3.jpg" alt="Ananya memory 3">
+    <img src="ananya4.jpg" alt="Ananya memory 4">
+  </div>
+  <p style="margin-top:15px;font-size:13px">
+    Every picture has its own little story. 💗
+  </p>
+</section>
+
+<!-- MUSIC -->
+<section>
+  <h2>A Little Music Corner 🎵</h2>
+  <div class="card">
+    <div style="font-size:55px">🎧🌙</div>
+    <p>Thoda music, thoda sukoon aur bahut saari good vibes!</p>
+    <button onclick="toggleMusic()" id="musicButton">
+      Play Music ▶
+    </button>
+    <audio id="music" src="music.mp3" loop></audio>
+    <p style="font-size:12px">
+      Music play karne ke liye button tap karo.
+    </p>
+  </div>
+</section>
+
+<!-- TRAVEL -->
+<section>
+  <h2>Your Little Travel Universe 🌍</h2>
+  <div class="card">
+    <div class="travel">🌍 ✈️ 🏔️</div>
+    <p>
+      Duniya bahut badi hai, aur explore karne ke liye
+      bahut saari beautiful jagah hain!
+    </p>
+    <p style="margin-top:15px">
+      Keep dreaming, keep exploring and keep collecting
+      beautiful memories. 🌷
+    </p>
+  </div>
+</section>
+
+<!-- FUNNY -->
+<section>
+  <h2>Some Important Facts About You 😂</h2>
+  <div class="card">
+    <p>1. Officially a birthday queen today! 👑</p>
+    <p>2. Unlimited smiles ka lifetime subscription! 😭</p>
+    <p>3. Thodi cute, thodi crazy, full entertainment! 🌝</p>
+    <p>4. Aaj cake calories count nahi hongi! 🎂</p>
+    <p>5. Smile karna compulsory hai! 😎</p>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section>
+  <h2>One Little Message For You 💌</h2>
+  <div class="card">
+    <div style="font-size:50px">💌</div>
+    <p>Ek chhota sa message hai... open karogi?</p>
+    <button onclick="showLetter()">Open My Letter 💗</button>
+
+    <div id="letter" class="hidden">
+      <p>
+Dear Ananya,
+
+Sabse pehle, HAPPY BIRTHDAY! 🥳💗
+
+Life mein hamesha khush rehna, haste rehna
+aur apne dreams ko kabhi chhodna mat.
+
+Kabhi-kabhi life boring ho sakti hai,
+kabhi difficult bhi, lekin I hope tumhare
+har naye din mein kuch achha zaroor ho.
+
+Thank you for being your own unique self.
+Tumhari smile aur tumhari craziness
+hamesha aisi hi bani rahe! 😂🌷
+
+May your life be filled with beautiful
+memories, wonderful adventures and
+countless reasons to smile.
+
+Once again, Happy Birthday, Ananya! 💗
+
+Keep shining, birthday star! ✨
+
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section>
+  <h1>Happy Birthday! 🎂</h1>
+  <p style="margin:20px 0">
+    Aaj ka din tumhara hai.
+    Enjoy every little moment! 💗
+  </p>
+  <button onclick="celebrate()">One Last Surprise 🎉</button>
+  <div id="finalMessage" class="hidden">
+    <h2 style="margin-top:30px">YOU ARE AWESOME! 🌟</h2>
+    <p>Sending you lots of happiness and good vibes! 💗</p>
+    <div style="font-size:50px">🎉🎂🌸✨💗</div>
+  </div>
+</section>
+
+<footer>
+  Made with lots of creativity, laughter and good wishes.
+  <br> A little universe, just for Ananya. 💗
+</footer>
+
+</main>
+
+<script>
+function openGift() {
+  document.getElementById("giftMessage").classList.toggle("hidden");
+}
+
+function blowCandles() {
+  document.getElementById("cake").innerHTML = "🎂✨";
+  document.getElementById("cakeMessage").innerHTML =
+    "Yayyy! Ab ek beautiful wish maang lo! 🌠💗";
+}
+
+let playing = false;
+
+function toggleMusic() {
+  const music = document.getElementById("music");
+  const btn = document.getElementById("musicButton");
+
+  if (!playing) {
+    music.play().then(() => {
+      playing = true;
+      btn.innerHTML = "Pause Music ⏸";
+    }).catch(() => {
+      btn.innerHTML = "Tap Again To Play ▶";
+    });
+  } else {
+    music.pause();
+    playing = false;
+    btn.innerHTML = "Play Music ▶";
+  }
+}
+
+function showLetter() {
+  document.getElementById("letter").classList.toggle("hidden");
+}
+
+function celebrate() {
+  document.getElementById("finalMessage").classList.remove("hidden");
+
+  for (let i = 0; i < 35; i++) {
+    const star = document.createElement("div");
+    star.innerHTML = ["💗","✨","🌸","🎉","⭐"][i % 5];
+    star.className = "float";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(star);
+
+    setTimeout(() => star.remove(), 8500);
+  }
+}
+</script>
+
+</body>
+</html>
